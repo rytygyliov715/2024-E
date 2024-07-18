@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/default.css">
+    <title>员工表上传</title>
+</head>
+
+<body>
+    <h1>员工表上传</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+
+        <label for="file">上传 Excel 文件:</label>
+        <input type="file" id="file" name="file" accept=".xlsx" required></label>
+
+        <br><br>
+        <input type="checkbox" id="skipDuplicates" name="skipDuplicates" value="true">
+        <label for="skipDuplicates">跳过重复项</label>
+
+        <input type="submit" value="上传">
+    </form>
+</body>
+
+</html>

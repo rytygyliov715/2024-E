@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>员工信息</title>
+    <link rel="stylesheet" href="../css/HMOS.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">员工信息</h1>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>员工编号</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>职位</th>
+                    <th>入职日期</th>
+                    <th>年龄</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.id}"></td>
+                    <td th:text="${employee.name}"></td>
+                    <td th:text="${employee.male}"></td>
+                    <td th:text="${employee.posts}"></td>
+                    <td th:text="${employee.on_date}"></td>
+                    <td th:text="${employee.age}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

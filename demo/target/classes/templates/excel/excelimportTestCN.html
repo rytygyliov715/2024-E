@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Excel表上传CN</title>
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            margin: 100px auto;
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            margin: 10px 0;
+        }
+
+        input[type="file"] {
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            height: 30px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            height: 30px;
+            background-color: #0a59f7;
+            color: #c7c7cc;
+            border: none;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0a59f7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/test/excelimportTestCN" method="post" enctype="multipart/form-data">
+            <h1>Excel Import CN</h1>
+            <label for="tableName">表名:</label>
+            <input type="text" id="tableName" name="tableName" required><br><br>
+
+            <label for="file">上传 Excel 文件:</label>
+            <input type="file" id="file" name="file" accept=".xlsx" required></label>
+
+            <br><br>
+            <input type="checkbox" id="skipDuplicates" name="skipDuplicates" value="true">
+            <label for="skipDuplicates">跳过重复项</label>
+
+            <input type="submit" value="上传">
+        </form>
+    </div>
+</body>
+
+</html>

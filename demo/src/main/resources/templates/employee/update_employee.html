@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>更新员工</title>
+    <link rel="stylesheet" href="../css/default.css">
+</head>
+
+<body>
+    <form th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+        <table>
+            <tr>
+                <td></td>
+                <td>
+                    <h1>更新员工</h1>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="id">ID:</label></td>
+                <td><input type="text" id="id" th:field="*{id}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">姓名:</label></td>
+                <td><input type="text" id="name" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td><label for="male">性别:</label></td>
+                <td><select name="male" id="male" th:field="*{male}">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td><label for="onDate">入职日期:</label></td>
+                <td><input type="date" id="onDate" th:field="*{on_date}" /></td>
+            </tr>
+            <tr>
+                <td><label for="posts">职位:</label></td>
+                <td><select name="posts" id="posts" th:field="*{posts}">
+                        <option value="实习生">实习生</option>
+                        <option value="职工">职工</option>
+                        <option value="组长">组长</option>
+                        <option value="经理">经理</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit">保存</button></td>
+            </tr>
+        </table>
+
+    </form>
+</body>
+
+</html>

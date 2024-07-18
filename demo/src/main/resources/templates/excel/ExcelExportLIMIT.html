@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel导出LIMIT</title>
+    <style>
+        table {
+
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            width: 120px;
+            height: 40px;
+            top: 20px;
+            Left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="crad">
+        <form action="/exportLIMIT" method="post">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <h3>Excel导出</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="tableName">表名</label></td>
+                    <td><input type="text" name="tableName" id="tableName" placeholder="输入要导出的表名"></td>
+                </tr>
+                <tr>
+                    <td><label for="limit">限制</label></td>
+                    <td>
+                        <input type="text" name="page" id="page" placeholder="输入要导出的页数">
+                        <br>
+                        <input type="text" name="limit" id="limit" placeholder="输入要导出的行数">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit">导出</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/default.css">
+    <title>员工列表</title>
+
+</head>
+
+<body>
+    <h1>员工列表</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>工号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>入职日期</th>
+                <th>职位</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="employee : ${listEmployees}">
+                <td th:text="${employee.id}"></td>
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.male}"></td>
+                <td th:text="${employee.on_date}"></td>
+                <td th:text="${employee.posts}"></td>
+                <td>
+                    <button><a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}">编辑</a></button>
+                    <button><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}">删除</a></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button> <a href="/showNewEmployeeForm">新增员工</a></button>
+    <button onclick="window.location.href='/test/excelexport?tableName=employee'">导出为excel</button>
+</body>
+
+</html>
