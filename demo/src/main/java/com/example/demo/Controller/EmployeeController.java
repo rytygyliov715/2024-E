@@ -90,6 +90,6 @@ public class EmployeeController {
     @PostMapping("/register")
     public String registerEmployee(@ModelAttribute Employee employee) {
         employeeService.register(employee);
-        return "redirect:/login"; // Assuming you have a login page
+        return "redirect:/login"; // 注册成功后重定向到登录页面
     }
 }

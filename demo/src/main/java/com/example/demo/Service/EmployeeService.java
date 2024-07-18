@@ -150,4 +150,17 @@ public class EmployeeService {
         employee.setPassword(encryptedPassword);
         employeeRepository.save(employee);
     }
+
+    // 登录验证
+    public Employee login(String id, String password) {// 接受id和password参数
+        Employee employee = employeeRepository.findById(Integer.parseInt(id)).orElse(null);// 根据id查找员工
+        if (employee == null) {
+            return null;
+        }
+        String encryptedPassword = PasswordUtil.encryptPassword(password, employee.getSalt());// 加密输入的密码
+        if (encryptedPassword.equals(employee.getPassword())) {// 比较加密后的密码
+            return employee;
+        }
+        return null;
+    }
 }

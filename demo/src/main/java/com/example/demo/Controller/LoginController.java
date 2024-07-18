@@ -69,7 +69,7 @@ public class LoginController {
         if (id == null) {// 如果session中没有id
             return "redirect:/login";// 重定向到登录页面
         }
-        Employee employee = employeeService.getEmployeeById(Integer.valueOf(id)); // 修改这里
+        Employee employee = employeeService.getEmployeeById(Integer.valueOf(id)); // 根据id获取员工
         List<Employee> employees = Arrays.asList(employee); // 创建一个只包含这个员工的列表
         model.addAttribute("employees", employees);
         return "shiro/dashboard";
