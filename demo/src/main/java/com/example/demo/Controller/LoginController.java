@@ -1,16 +1,8 @@
 package com.example.demo.Controller;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.example.demo.Entity.Employee;
 import com.example.demo.Service.EmployeeService;
+import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -22,14 +14,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.Entity.Employee;
-import com.google.code.kaptcha.impl.DefaultKaptcha;
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class LoginController {
 
     @Autowired
-    private DefaultKaptcha producer;
+    private DefaultKaptcha producer;// 注入 DefaultKaptcha 对象,用于生成验证码
 
     @Autowired
     private EmployeeService employeeService;

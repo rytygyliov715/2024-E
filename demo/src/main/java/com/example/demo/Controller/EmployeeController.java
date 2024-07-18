@@ -1,5 +1,7 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Entity.Employee;
+import com.example.demo.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,9 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.example.demo.Entity.Employee;
-import com.example.demo.Service.EmployeeService;
 
 import java.io.IOException;
 
@@ -82,4 +81,15 @@ public class EmployeeController {
         }
     }
 
+    @GetMapping("/register")
+    public String showRegisterForm(Model model) {
+        model.addAttribute("employee", new Employee());
+        return "shiro/register";
+    }
+
+    @PostMapping("/register")
+    public String registerEmployee(@ModelAttribute Employee employee) {
+        employeeService.register(employee);
+        return "redirect:/login"; // Assuming you have a login page
+    }
 }

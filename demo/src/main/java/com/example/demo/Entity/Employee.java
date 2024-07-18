@@ -3,6 +3,7 @@ package com.example.demo.Entity;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -27,6 +28,10 @@ public class Employee {
 
     private Integer wages;// 员工工资
 
+    @Column(nullable = false, length = 32)
     private String password;// 员工密码
+
+    @Column(length = 32)
+    private String salt;// 盐值
 
 }

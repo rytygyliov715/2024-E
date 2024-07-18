@@ -19,3 +19,9 @@ INSERT INTO
         db_column
     )
 VALUES ('employee', '密码', 'password');
+
+--在员工表加入盐列
+ALTER Table employee ADD COLUMN salt VARCHAR(20) NOT NULL;
+
+--修改列password的类型为char(32)
+ALTER Table employee MODIFY COLUMN salt CHAR(32) NOT NULL;

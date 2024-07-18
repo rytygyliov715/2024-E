@@ -1,0 +1,262 @@
+ body {
+     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+     background-color: #f4f4f9;
+     color: #333;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+ }
+
+ .container {
+     background: #fff;
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     max-width: 400px;
+     width: 100%;
+     margin: 20px;
+ }
+
+ h2 {
+     margin-bottom: 20px;
+     font-size: 24px;
+     color: #1a73e8;
+ }
+
+ .form {
+     display: flex;
+     flex-direction: column;
+ }
+
+ .form-group {
+     margin-bottom: 15px;
+ }
+
+ label {
+     margin-bottom: 5px;
+     font-weight: bold;
+ }
+
+ input,
+ select {
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     width: 100%;
+     box-sizing: border-box;
+ }
+
+ button {
+     padding: 10px 20px;
+     border: none;
+     border-radius: 4px;
+     background-color: #1a73e8;
+     color: #fff;
+     font-size: 16px;
+     cursor: pointer;
+     margin-top: 10px;
+ }
+
+ button.secondary {
+     background-color: #ccc;
+ }
+
+ button:hover {
+     background-color: #0c5bd3;
+ }
+
+ button.secondary:hover {
+     background-color: #aaa;
+ }
+
+ .toggle-button {
+     margin-top: 20px;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 4px;
+     background-color: #333;
+     color: #fff;
+     font-size: 16px;
+     cursor: pointer;
+ }
+
+ .dark-mode {
+     background-color: #333;
+     color: #fff;
+ }
+
+ .dark-mode .container {
+     background: #444;
+     color: #fff;
+ }
+
+ .dark-mode input,
+ .dark-mode select {
+     background-color: #555;
+     border: 1px solid #666;
+     color: #fff;
+ }
+
+ .dark-mode button {
+     background-color: #1a73e8;
+ }
+
+ .dark-mode button.secondary {
+     background-color: #666;
+ }
+
+ .dark-mode button:hover {
+     background-color: #0c5bd3;
+ }
+
+ .dark-mode button.secondary:hover {
+     background-color: #888;
+ }
+
+ @media (max-width: 768px) {
+     .container {
+         padding: 15px;
+     }
+
+     h2 {
+         font-size: 20px;
+     }
+
+     input,
+     select {
+         padding: 8px;
+     }
+
+     button {
+         padding: 8px 16px;
+         font-size: 14px;
+     }
+ }
+
+ body {
+     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+     background-color: #f4f4f9;
+     color: #333;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     transition: background-color 0.3s, color 0.3s;
+ }
+
+ .container {
+     background: #fff;
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     max-width: 800px;
+     width: 100%;
+     margin: 20px;
+ }
+
+ h2 {
+     margin-bottom: 20px;
+     font-size: 24px;
+     color: #1a73e8;
+     text-align: center;
+ }
+
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-bottom: 20px;
+ }
+
+ th,
+ td {
+     padding: 12px;
+     text-align: left;
+     border-bottom: 1px solid #ccc;
+ }
+
+ th {
+     background-color: #f4f4f9;
+     color: #333;
+     font-weight: bold;
+ }
+
+ tr:hover {
+     background-color: #f1f1f1;
+ }
+
+ button {
+     padding: 10px 20px;
+     border: none;
+     border-radius: 4px;
+     background-color: #1a73e8;
+     color: #fff;
+     font-size: 16px;
+     cursor: pointer;
+     margin-top: 10px;
+ }
+
+ button:hover {
+     background-color: #0c5bd3;
+ }
+
+ @media (max-width: 768px) {
+     .container {
+         padding: 15px;
+     }
+
+     h2 {
+         font-size: 20px;
+     }
+
+     th,
+     td {
+         padding: 8px;
+     }
+
+     button {
+         padding: 8px 16px;
+         font-size: 14px;
+     }
+ }
+
+ /* Dark Mode */
+ body.dark-mode {
+     background-color: #333;
+     color: #ddd;
+ }
+
+ .container.dark-mode {
+     background: #555;
+     color: #ddd;
+ }
+
+ h2.dark-mode {
+     color: #1a73e8;
+ }
+
+ th.dark-mode {
+     background-color: #444;
+     color: #ddd;
+ }
+
+ td.dark-mode {
+     background-color: #555;
+     color: #ddd;
+ }
+
+ tr.dark-mode:hover {
+     background-color: #444;
+ }
+
+ button.dark-mode {
+     background-color: #1a73e8;
+ }
+
+ button.dark-mode:hover {
+     background-color: #0c5bd3;
+ }

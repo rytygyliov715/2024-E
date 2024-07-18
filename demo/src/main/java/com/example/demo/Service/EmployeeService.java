@@ -1,15 +1,15 @@
 package com.example.demo.Service;
 
+import com.example.demo.Entity.Employee;
+import com.example.demo.Entity.ExcelColumnMapping;
+import com.example.demo.Repository.EmployeeRepository;
+import com.example.demo.Repository.ExcelColumnMappingRepository;
+import com.example.demo.Util.PasswordUtil;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.example.demo.Entity.Employee;
-import com.example.demo.Entity.ExcelColumnMapping;
-import com.example.demo.Repository.EmployeeRepository;
-import com.example.demo.Repository.ExcelColumnMappingRepository;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -142,4 +142,12 @@ public class EmployeeService {
                 .collect(Collectors.toMap(ExcelColumnMapping::getExcel_header, ExcelColumnMapping::getDb_column));
     }
 
+    // 注册用户并加密保存密码
+    public void register(Employee employee) {
+        String salt = PasswordUtil.generateSalt();
+        String encryptedPassword = PasswordUtil.encryptPassword(employee.getPassword(), salt);
+        employee.setSalt(salt);
+        employee.setPassword(encryptedPassword);
+        employeeRepository.save(employee);
+    }
 }

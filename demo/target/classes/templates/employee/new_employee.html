@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" th:href="@{/css/default.css}" />
     <title>新增员工</title>
 </head>
 
 <body>
-    <form th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+    <form th:action="@{/register}" th:object="${employee}" method="post">
         <table>
             <tr>
                 <td></td>
@@ -25,6 +25,10 @@
                 <td><input type="text" id="name" th:field="*{name}" /></td>
             </tr>
             <tr>
+                <td><label for="password">密码:</label></td>
+                <td><input type="text" id="password" th:field="*{password}" /></td>
+            <tr>
+            <tr>
                 <td><label for="male">性别:</label></td>
                 <td>
                     <select name="male" id="male" th:field="*{male}">
@@ -38,6 +42,10 @@
                 <td><input type="date" id="onDate" th:field="*{on_date}" /></td>
             </tr>
             <tr>
+                <td><label for="age">年龄:</label></td>
+                <td><input type="text" id="age" th:field="*{age}" /></td>
+            </tr>
+            <tr>
                 <td><label for="posts">职位:</label></td>
                 <td><select name="posts" id="posts" th:field="*{posts}">
                         <option value="实习生">实习生</option>
@@ -45,6 +53,10 @@
                         <option value="组长">组长</option>
                         <option value="经理">经理</option>
                     </select></td>
+            </tr>
+            <tr>
+                <td><label for="wages">工资:</label></td>
+                <td><input type="text" id="wages" th:field="*{wages}" /></td>
             </tr>
             <tr>
                 <td></td>
