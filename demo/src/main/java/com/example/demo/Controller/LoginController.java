@@ -45,8 +45,8 @@ public class LoginController {
             @RequestParam("encryptedPassword") String password, // 获取密码
             @RequestParam("key") String key, // 获取密钥
             @RequestParam("iv") String iv, // 获取偏移量
-            @RequestParam("captcha") String captcha, // 获取验证码
-            HttpSession session, // 获取session对象
+            @RequestParam("captcha") String captcha, // 获取前端输入的验证码
+            HttpSession session, // 获取session对象：实际的验证码
             Model model)
             throws Exception {
 
@@ -85,7 +85,7 @@ public class LoginController {
     // 获取验证码
     @GetMapping("/captcha")
     public void captcha(HttpServletResponse response, // HttpServletResponse对象用于设置响应的内容类型和输出流
-            HttpSession session)// HttpSession对象用于保存验证码
+            HttpSession session)// session对象用于保存验证码
             throws IOException {// IOException异常用于处理输入输出异常
         try {
             response.setContentType("image/jpeg");// 设置响应的内容类型
