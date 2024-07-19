@@ -17,19 +17,3 @@ excel列名映射表excel_column_mapping
 | 12  | Employee   | 性别         | male     |
 | 13  | Employee   | 入职日期     | on_date  |
 | 14  | Employee   | 职位         | posts    |
-
-
-| 页面                          | 地址                    |
-| ----------------------------- | ----------------------- |
-| 主页                          | /index                  |
-| hw                            | /test/helloworld        |
-| 文件上传                      | /test/fileupload        |
-| 基础excel导入                 | /test/excelimport       |
-| 进阶excel导入                 | /test/excelimportTest   |
-| 高级excel导入                 | /test/excelimportTestCN |
-| excel导出                     | /export                 |
-| 进阶excel导出                 | /exportLIMIT            |
-| 登录                          | /login                  |
-| 员工名单展示                  | /employees              |
-| 新增员工(注册)                | /showNewEmployeeForm    |
-| 员工excel导入(已无法正常使用) | /emp_excelimport        |
