@@ -72,7 +72,7 @@ public class EmployeeController {
     public ResponseEntity<String> importExcel(@RequestParam("file") MultipartFile file,
             @RequestParam(value = "skipDuplicates", defaultValue = "false") boolean skipDuplicates) {
         try {
-            employeeService.importExcel(file, skipDuplicates);// 调用导入方法
+            employeeService.importExcel(file, skipDuplicates);// 导入Excel数据
             return ResponseEntity.ok("已成功导入 Excel 数据.");
         } catch (IOException e) {
             // 如果导入失败，返回错误信息
@@ -81,4 +81,15 @@ public class EmployeeController {
         }
     }
 
+    @GetMapping("/register")
+    public String showRegisterForm(Model model) {
+        model.addAttribute("employee", new Employee());
+        return "shiro/register";
+    }
+
+    @PostMapping("/register")
+    public String registerEmployee(@ModelAttribute Employee employee) {
+        employeeService.register(employee);
+        return "redirect:/login"; // 注册成功后重定向到登录页面
+    }
 }
