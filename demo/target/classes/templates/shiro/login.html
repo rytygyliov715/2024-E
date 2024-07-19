@@ -3,13 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/css/HMOS.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登录</title>
+    <style>
+        .container {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        function encryptPassword() {
+            const passwordField = document.getElementById('password');// 获取密码字段
+            const encryptedPasswordField = document.getElementById('encryptedPassword');// 获取加密密码字段
+            const keyField = document.getElementById('key');// 获取密钥字段
+            const ivField = document.getElementById('iv');// 获取IV字段
+
+            const key = CryptoJS.lib.WordArray.random(16); // 生成随机密钥
+            const iv = CryptoJS.lib.WordArray.random(16); // 生成随机IV
+
+            const encrypted = CryptoJS.AES.encrypt(passwordField.value, key, { iv: iv });
+            encryptedPasswordField.value = encrypted.toString();// 将加密后的密码传递到服务器
+            keyField.value = CryptoJS.enc.Base64.stringify(key); // 将密钥传递到服务器
+            ivField.value = CryptoJS.enc.Base64.stringify(iv); // 将IV传递到服务器
+
+            encryptedPasswordField.value = encrypted.toString();
+            passwordField.value = ''; // 清除原始密码字段
+        }
+    </script>
 </head>
 
 <body>
     <div class="container">
-        <form action="/login" method="post">
+        <form id="encryptPasswordForm" action="/login" method="post" onsubmit="encryptPassword()">
             <table>
                 <tr>
                     <td>
@@ -29,6 +72,7 @@
                     <td><label for="password">密码:</label></td>
                     <td><input type="password" id="password" name="password"></td>
                 </tr>
+
                 <tr>
                     <td><label for="captcha">验证码:</label></td>
                     <td>
@@ -38,7 +82,20 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><button type="submit">登录</button></td>
+                    <td>
+                        <button type="submit">登录</button>
+                        <!-- 注册 -->
+                        <button><a href="/showNewEmployeeForm">注册</a></button>
+                    </td>
+                </tr>
+                <!-- 加密密码, 密钥,IV-->
+                <tr style="display: none;">
+                    <td><label for="encryptedPassword">加密密码:</label></td>
+                    <td><input type="hidden" id="encryptedPassword" name="encryptedPassword"></td>
+                    <td><label for="key">密钥:</label></td>
+                    <td><input type="hidden" id="key" name="key"></td>
+                    <td><label for="iv">IV:</label></td>
+                    <td><input type="hidden" id="iv" name="iv"></td>
                 </tr>
             </table>
         </form>

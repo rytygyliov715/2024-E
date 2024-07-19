@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Entity.Employee;
 import com.example.demo.Service.EmployeeService;
+import com.example.demo.Util.AESUtil;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -41,10 +42,16 @@ public class LoginController {
     // 登录处理
     @PostMapping("/login")
     public String login(@RequestParam("id") String id, // 获取用户名
-            @RequestParam("password") String password, // 获取密码
+            @RequestParam("encryptedPassword") String password, // 获取密码
+            @RequestParam("key") String key, // 获取密钥
+            @RequestParam("iv") String iv, // 获取偏移量
             @RequestParam("captcha") String captcha, // 获取验证码
             HttpSession session, // 获取session对象
-            Model model) {
+            Model model)
+            throws Exception {
+
+        String decryptedPassword = AESUtil.decrypt(password, key, iv); // 解密密码
+
         String kaptcha = (String) session.getAttribute("kaptcha");// 获取session中的验证码
         session.setAttribute("id", id);// 将id保存到session中
         if (!captcha.equalsIgnoreCase(kaptcha)) {// 判断验证码是否正确
@@ -53,8 +60,8 @@ public class LoginController {
         }
         try {
             Subject subject = SecurityUtils.getSubject();// 获取当前用户
-            UsernamePasswordToken token = new UsernamePasswordToken(id, password);// 创建用户名密码令牌
-            subject.login(token);// 登录
+            UsernamePasswordToken token = new UsernamePasswordToken(id, decryptedPassword);// 创建用户名密码令牌
+            subject.login(token);// 发送令牌到Loginrealm
             return "redirect:/dashboard";
         } catch (AuthenticationException e) {// 如果登录失败
             model.addAttribute("error", "用户名或密码错误");

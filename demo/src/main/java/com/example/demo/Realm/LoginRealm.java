@@ -27,7 +27,8 @@ public class LoginRealm extends AuthorizingRealm {
 
     // 登录认证
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)// 获取认证信息
+            throws AuthenticationException {
         String id = (String) token.getPrincipal(); // 获取用户名，即员工ID
         String password = new String((char[]) token.getCredentials()); // 获取用户输入的密码
 
