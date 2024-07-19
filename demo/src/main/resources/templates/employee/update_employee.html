@@ -4,15 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <title>更新员工</title>
-    <link rel="stylesheet" href="../static/css/default.css">
+    <style>
+        table {
+            margin: auto;
+            width: 75%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        code {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
     <form th:action="@{/saveEmployee}" th:object="${employee}" method="post">
         <table>
             <tr>
-                <td></td>
-                <td>
+
+                <td colspan="2">
                     <h1>更新员工</h1>
                 </td>
             </tr>
@@ -23,6 +68,10 @@
             <tr>
                 <td><label for="name">姓名:</label></td>
                 <td><input type="text" id="name" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td><label for="password">密码:</label></td>
+                <td><input type="text" id="password" th:field="*{password}" /></td>
             </tr>
             <tr>
                 <td><label for="male">性别:</label></td>

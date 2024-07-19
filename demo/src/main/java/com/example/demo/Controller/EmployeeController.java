@@ -81,12 +81,6 @@ public class EmployeeController {
         }
     }
 
-    @GetMapping("/register")
-    public String showRegisterForm(Model model) {
-        model.addAttribute("employee", new Employee());
-        return "shiro/register";
-    }
-
     @PostMapping("/register")
     public String registerEmployee(@ModelAttribute Employee employee) {
         employeeService.register(employee);

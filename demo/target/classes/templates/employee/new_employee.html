@@ -5,14 +5,60 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/default.css}" />
     <title>新增员工</title>
+    <style>
+        table {
+            margin: auto;
+            width: 75%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        code {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
     <form th:action="@{/register}" th:object="${employee}" method="post">
         <table>
             <tr>
-                <td></td>
-                <td>
+
+                <td colspan="2">
                     <h1>新增员工</h1>
                 </td>
             </tr>
