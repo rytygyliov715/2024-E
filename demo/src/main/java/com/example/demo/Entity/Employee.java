@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Entity
 @Data // getters and setters
 @Table(name = "employee")
-public class Employee implements Serializable {
+public class Employee implements Serializable {// 员工实体类,接入序列化接口
     @Id
     private Integer id;// 员工编号
 

@@ -39,11 +39,6 @@ public class LoginRealm extends AuthorizingRealm {
             throw new AuthenticationException("用户名或密码错误");
         }
 
-        // 将用户信息存储在会话中
-        // org.apache.shiro.subject.Subject currentUser =
-        // org.apache.shiro.SecurityUtils.getSubject();
-        // currentUser.getSession().setAttribute("employee", employee);
-
         // 如果身份验证成功，返回一个AuthenticationInfo实现
         return new SimpleAuthenticationInfo(
                 employee,

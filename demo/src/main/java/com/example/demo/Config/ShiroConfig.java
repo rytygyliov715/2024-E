@@ -16,41 +16,45 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ShiroConfig {
 
+    // 为 RedisManager 创建 Bean
     @Bean
-    public RedisManager redisManager() {
-        RedisManager redisManager = new RedisManager();
-        redisManager.setHost("localhost:6379");
+    public RedisManager redisManager() {// RedisManager用于管理与Redis服务器的连接
+        RedisManager redisManager = new RedisManager();// 创建 RedisManager 对象
+        redisManager.setHost("localhost:6379");// 设置 Redis 服务器地址
         return redisManager;
     }
 
+    // 为 RedisCacheManager 创建 Bean
     @Bean
-    public RedisCacheManager cacheManager() {
+    public RedisCacheManager cacheManager() {// 缓存管理器，负责创建和管理 RedisCache 实例
         RedisCacheManager redisCacheManager = new RedisCacheManager();
         redisCacheManager.setRedisManager(redisManager());
         return redisCacheManager;
     }
 
+    // 为 RedisSessionDAO 创建 Bean
     @Bean
-    public RedisSessionDAO redisSessionDAO() {
+    public RedisSessionDAO redisSessionDAO() {// RedisSessionDAO用于将会话数据存储到Redis中
         RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
         redisSessionDAO.setRedisManager(redisManager());
         return redisSessionDAO;
     }
 
+    // 为 SessionManager 创建 Bean
     @Bean
-    public DefaultWebSessionManager sessionManager() {
-        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
-        sessionManager.setSessionDAO(redisSessionDAO());
+    public DefaultWebSessionManager sessionManager() {// 用于管理会话的生命周期
+        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();// 创建 DefaultWebSessionManager 对象
+        sessionManager.setSessionDAO(redisSessionDAO());// 将redisSessionDAO()设置到sessionManager中
         return sessionManager;
     }
 
     // 为 SecurityManager 创建 Bean
     @Bean
     public SecurityManager securityManager() {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setCacheManager(cacheManager());
-        securityManager.setSessionManager(sessionManager());
-        securityManager.setRealm(ShiroRealm());
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();// 创建 DefaultWebSecurityManager 对象
+        securityManager.setCacheManager(cacheManager());// 配置缓存管理器
+        securityManager.setSessionManager(sessionManager());// 配置会话管理器
+        securityManager.setRealm(ShiroRealm());// 配置 Realm
         ThreadContext.bind(securityManager); // 手动绑定 SecurityManager
         return securityManager;
     }
